@@ -40,7 +40,7 @@ class _SignInPage extends State<SignInPage> {
                 'or',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: Colors.pink[400], fontWeight: FontWeight.bold),
+                    color: Colors.blue[800], fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 24),
               Row(children: [
@@ -84,7 +84,7 @@ class _SignInPage extends State<SignInPage> {
                     padding: EdgeInsets.all(0),
                     child: Text("Register Here",
                         style: TextStyle(
-                            color: Colors.pink, fontWeight: FontWeight.bold)),
+                            color: Colors.blue, fontWeight: FontWeight.bold)),
                     onPressed: () {
                       Navigator.push(
                           context,

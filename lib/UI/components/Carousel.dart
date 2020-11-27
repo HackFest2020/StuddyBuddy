@@ -1,33 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:study_buddy/UI/landing_page/LandingPage.dart';
 
 //3rd party libraries
 import 'package:carousel_slider/carousel_slider.dart';
 
-class Carousel extends StatelessWidget{
+class Carousel extends StatelessWidget {
   double _height;
   List _items;
 
   Carousel(double height, List items) {
-    this._height = height;
-    this._items = items;
+    _height = height;
+    _items = items;
   }
 
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
-      options: CarouselOptions(height: _height),
+      options: CarouselOptions(
+        height: _height,
+        initialPage: 0,
+        enableInfiniteScroll: false,
+        enlargeCenterPage: true,
+      ),
       items: _items.map((i) {
-        return Builder(
-          builder: (BuildContext context) {
-            return Container(
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(horizontal: 5.0),
-                decoration: BoxDecoration(color: Colors.amber),
-                child: Text(
-                  'text $i',
-                  style: TextStyle(fontSize: 16.0),
-                ));
+        return GestureDetector(
+          onTap: () {
+            //TODO: add tap action to carousel
           },
+          child: Builder(
+            builder: (BuildContext context) {
+              return Container(
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 8),
+                  width: MediaQuery.of(context).size.width,
+                  //margin: EdgeInsets.symmetric(horizontal: 5.0),
+                  child: Card(
+                    elevation: 3,
+                    borderOnForeground: true,
+                    semanticContainer: true,
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0)),
+                    child:
+                        Image.asset('./assets/img/' + i, fit: BoxFit.contain),
+                  ));
+            },
+          ),
         );
       }).toList(),
     );
