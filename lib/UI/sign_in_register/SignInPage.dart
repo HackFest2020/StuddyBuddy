@@ -1,7 +1,9 @@
 import 'dart:ui';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:study_buddy/UI/components/Forms.dart';
 import 'package:study_buddy/UI/sign_in_register/RegisterPage.dart';
 
@@ -15,6 +17,20 @@ class _SignInPage extends State<SignInPage> {
   @override
   void initState() {
     super.initState();
+  }
+
+//firebase auth google integ
+Future<void> _signInWithGoogle() async {
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    GoogleSignIn googleSignIn = GoogleSignIn();
+    final acc = await googleSignIn.signIn();
+    final auth = await acc.authentication;
+    final credential = GoogleAuthProvider.credential(
+      accessToken: auth.accessToken,
+      idToken: auth.idToken
+    );
+    final res = await _auth.signInWithCredential(credential);
+    return res.user;
   }
 
   @override
@@ -52,7 +68,7 @@ class _SignInPage extends State<SignInPage> {
                   child: RaisedButton(
                     child: Text('Google'),
                     color: Colors.white,
-                    onPressed: () {},
+                    onPressed: _signInWithGoogle,
                   ),
                 ),
                 Expanded(

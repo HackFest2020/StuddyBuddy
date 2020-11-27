@@ -1,10 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:study_buddy/UI/landing_page/LandingPage.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //TODO: uncomment code below after firebase is set up
-  //await Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

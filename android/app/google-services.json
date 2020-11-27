@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "562735332119",
+    "firebase_url": "https://myschool-194c6.firebaseio.com",
+    "project_id": "myschool-194c6",
+    "storage_bucket": "myschool-194c6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562735332119:android:9432769c39196720b81552",
+        "android_client_info": {
+          "package_name": "com.powerph.study_buddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "562735332119-oenqvvfqs44iijuth8h6gqk3kedb08g5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBncYKF4GHadtG4cPTovRCVe0ip5eFYprc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "562735332119-oenqvvfqs44iijuth8h6gqk3kedb08g5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
