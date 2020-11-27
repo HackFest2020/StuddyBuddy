@@ -30,7 +30,7 @@ class Carousel extends StatelessWidget {
         items: _items.map((i) {
           return GestureDetector(
             onTap: () {
-              //TODO: add tap action to carousel
+              Navigator.push(context, MaterialPageRoute(builder: (context) => carouselModel.navigateToPage()));
             },
             child: Builder(
               builder: (BuildContext context) {
