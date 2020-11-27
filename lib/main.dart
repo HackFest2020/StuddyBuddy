@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study_buddy/UI/landing_page/LandingPage.dart';
+import 'package:study_buddy/UI/sign_in_register/SignInPage.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.amber,
       ),
-      home: _first,
+      home: SignInPage(),
     );
   }
 }

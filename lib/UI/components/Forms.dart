@@ -26,7 +26,7 @@ class _SignInFormState extends State<SignInForm> {
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.email),
                 labelText: 'Email',
-                fillColor: Colors.pink[50],
+                fillColor: Colors.blue[100],
                 filled: true),
             validator: (_email) {
               if (_email.isEmpty) {
@@ -41,7 +41,7 @@ class _SignInFormState extends State<SignInForm> {
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.lock),
                 labelText: 'Password',
-                fillColor: Colors.pink[50],
+                fillColor: Colors.blue[100],
                 filled: true),
             obscureText: true,
             enableSuggestions: false,
@@ -58,12 +58,12 @@ class _SignInFormState extends State<SignInForm> {
               child: Text(
                 'SIGN IN',
                 style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    TextStyle(color: Colors.amber, fontWeight: FontWeight.bold),
               ),
               gradient: LinearGradient(
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
-                  colors: [Colors.redAccent[400], Colors.pink[700]]),
+                  colors: [Colors.blueAccent[400], Colors.blue[900]]),
               onPressed: () {
                 if (_formKey.currentState.validate())
                   //TODO: add sign in function here 
@@ -99,7 +99,7 @@ class _RegisterFormState extends State<RegisterForm> {
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.email),
                 labelText: 'Email',
-                fillColor: Colors.pink[50],
+                fillColor: Colors.blue[100],
                 filled: true),
             validator: (value) {
               // validation logic
@@ -110,7 +110,7 @@ class _RegisterFormState extends State<RegisterForm> {
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.lock),
                 labelText: 'Password',
-                fillColor: Colors.pink[50],
+                fillColor: Colors.blue[100],
                 filled: true),
             obscureText: true,
             enableSuggestions: false,
@@ -124,7 +124,7 @@ class _RegisterFormState extends State<RegisterForm> {
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.lock),
                 labelText: 'Confirm Password',
-                fillColor: Colors.pink[50],
+                fillColor: Colors.blue[100],
                 filled: true),
             obscureText: true,
             enableSuggestions: false,
@@ -138,12 +138,12 @@ class _RegisterFormState extends State<RegisterForm> {
             child: Text(
               'REGISTER',
               style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                  TextStyle(color: Colors.amber, fontWeight: FontWeight.bold),
             ),
             gradient: LinearGradient(
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
-                colors: [Colors.redAccent[400], Colors.pink[700]]),
+                colors: [Colors.blueAccent[400], Colors.blue[900]]),
             //onPressed:
           )
         ],
