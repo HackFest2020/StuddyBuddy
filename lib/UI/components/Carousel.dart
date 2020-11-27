@@ -35,11 +35,11 @@ class Carousel extends StatelessWidget {
             child: Builder(
               builder: (BuildContext context) {
                 return Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 8),
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 24),
                     width: MediaQuery.of(context).size.width,
                     //margin: EdgeInsets.symmetric(horizontal: 5.0),
                     child: Card(
-                      elevation: 3,
+                      elevation: 10,
                       borderOnForeground: true,
                       semanticContainer: true,
                       color: Colors.yellow,

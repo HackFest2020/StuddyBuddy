@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:study_buddy/UI/components/Carousel.dart';
 import 'package:study_buddy/UI/components/Drawer.dart';
 import 'package:study_buddy/Models/CarouselModel.dart';
+import 'package:study_buddy/UI/account_page/AccountPage.dart';
 
 import 'package:provider/provider.dart';
 
@@ -16,35 +17,60 @@ class _LandingPage extends State<LandingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.blue[800],
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
-        ),
         drawer: Drawer(
           child: DrawerWidget(),
         ),
-        body: Container(
-          child: Column(
-            children: [
-              SizedBox(height: 80),
-              Container(
-                alignment: Alignment.centerLeft,
-                margin: EdgeInsets.fromLTRB(24, 0, 0, 0),
-                child: Text(
-                  "Welcome!",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      fontFamily: 'Roboto',
-                      //fontWeight: ,
-                      fontSize: 36,
-                      color: Colors.white),
+        body: SingleChildScrollView(
+          child: Container(
+            child: Column(
+              children: [
+                SizedBox(height: 56),
+                Container(
+                    alignment: Alignment.centerRight,
+                    margin: EdgeInsets.fromLTRB(0, 0, 24, 16),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AccountPage()));
+                      },
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage('./assets/img/woman.png'),
+                        backgroundColor: Colors.white,
+                      ),
+                    )),
+                SizedBox(height: 36),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin: EdgeInsets.fromLTRB(24, 0, 0, 0),
+                  child: Text(
+                    "Welcome!",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 48,
+                        color: Colors.yellow),
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              DescriptionText(),
-            ],
+                SizedBox(
+                  height: 8,
+                ),
+                Container(
+                    alignment: Alignment.centerLeft,
+                    margin: EdgeInsets.fromLTRB(24, 0, 0, 0),
+                    child: Text(
+                      'Get Started',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w200,
+                          fontSize: 24,
+                          color: Colors.white),
+                    )),
+                SizedBox(
+                  height: 16,
+                ),
+                DescriptionText(),
+              ],
+            ),
           ),
         ));
   }
@@ -66,7 +92,7 @@ class _DescriptionText extends State<DescriptionText> {
   ];
   List carouselItemsDescs = [
     "We are here to address your concerns, answer questions, and provide information and referrals to provide you with an outstanding NU student experience.",
-    "We listen. We help. We counsel. Drop us a message anytime so we can help each other improve through offering support, providing feedback and understanding, increasing self-confidence, and addressing negative self-talk.",
+    "We listen. We help. We counsel. \nDrop us a message anytime so we can help each other improve through offering support, providing feedback and understanding, increasing self-confidence, and addressing negative self-talk.",
     "Need access to library resources, research support, and study or assignment support?  We’ve got you.",
     "Need help in overcoming difficulties in a course? Our NU Blue Scholars are here to help you hurdle those.",
   ];
@@ -92,11 +118,9 @@ class _DescriptionText extends State<DescriptionText> {
                   descsMap[carouselModel.page],
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                    color: Colors.white
-                  ),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      color: Colors.white),
                 ));
           })
         ]));
