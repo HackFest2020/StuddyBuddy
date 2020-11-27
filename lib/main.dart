@@ -18,6 +18,8 @@ class MyApp extends StatelessWidget {
 }
 
 class StudentHome extends StatelessWidget {
+  Color primaryBlue = Colors.blue[900];
+
   Widget cardLists = ListView(
     children: [
       Container(
@@ -28,7 +30,7 @@ class StudentHome extends StatelessWidget {
                 onPressed: () {},
                 child: Text(
                   'My School',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.amber),
                 ),
                 color: Colors.blue[900],
               ),
@@ -36,7 +38,7 @@ class StudentHome extends StatelessWidget {
                 onPressed: () {},
                 child: Text(
                   'Announcements',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.amber),
                 ),
                 color: Colors.blue[900],
               ),
@@ -44,7 +46,7 @@ class StudentHome extends StatelessWidget {
                 onPressed: () {},
                 child: Text(
                   'About',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.amber),
                 ),
                 color: Colors.blue[900],
               )
@@ -117,20 +119,54 @@ class StudentHome extends StatelessWidget {
     ],
   );
 
+  Widget myDrawer = Drawer(
+    child: ListView(
+      padding: EdgeInsets.zero,
+      children: const <Widget>[
+        DrawerHeader(
+          decoration: BoxDecoration(
+            color: Colors.amber,
+          ),
+          child: Text(
+            'My School App',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 24,
+            ),
+          ),
+        ),
+        ListTile(
+          leading: Icon(Icons.device_hub, color: Colors.blue),
+          title: Text('Student Hub'),
+          trailing: Icon(Icons.arrow_forward_ios, color: Colors.blue),
+        ),
+        ListTile(
+          leading: Icon(Icons.people, color: Colors.blue),
+          title: Text('Study Buddy'),
+          trailing: Icon(Icons.arrow_forward_ios, color: Colors.blue),
+        ),
+        ListTile(
+          leading: Icon(Icons.book, color: Colors.blue),
+          title: Text('LRC Online'),
+          trailing: Icon(Icons.arrow_forward_ios, color: Colors.blue),
+        ),
+        ListTile(
+          leading: Icon(Icons.chat_bubble_outline, color: Colors.blue),
+          title: Text('Kumustahan'),
+          trailing: Icon(Icons.arrow_forward_ios, color: Colors.blue),
+        ),
+      ],
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.list),
-          onPressed: () {
-            print('List Pressed');
-          },
-          color: Colors.amber,
-        ),
         title: Text('My School',
             style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.blue[900],
+        iconTheme: IconThemeData(color: Colors.amber),
         actions: [
           IconButton(
             icon: Icon(Icons.help_outline),
@@ -141,6 +177,7 @@ class StudentHome extends StatelessWidget {
           )
         ],
       ),
+      drawer: myDrawer,
       body: cardLists,
       floatingActionButton: FloatingActionButton(
         focusElevation: 5,
