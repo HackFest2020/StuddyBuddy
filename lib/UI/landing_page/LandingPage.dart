@@ -15,38 +15,36 @@ class _LandingPage extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.blue[800],
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          iconTheme: IconThemeData(color: Colors.black87),
           shadowColor: Colors.transparent,
         ),
         drawer: Drawer(
           child: DrawerWidget(),
         ),
         body: Container(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: 36),
-                Container(
-                  alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.fromLTRB(24, 0, 0, 0),
-                  child: Text(
-                    "Welcome!",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w900,
-                        fontFamily: 'Roboto',
-                        //fontWeight: ,
-                        fontSize: 36,
-                        color: Colors.black87),
-                  ),
+          child: Column(
+            children: [
+              SizedBox(height: 80),
+              Container(
+                alignment: Alignment.centerLeft,
+                margin: EdgeInsets.fromLTRB(24, 0, 0, 0),
+                child: Text(
+                  "Welcome!",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      fontFamily: 'Roboto',
+                      //fontWeight: ,
+                      fontSize: 36,
+                      color: Colors.white),
                 ),
-                SizedBox(
-                  height: 16,
-                ),
-                DescriptionText(),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              DescriptionText(),
+            ],
           ),
         ));
   }
@@ -67,10 +65,10 @@ class _DescriptionText extends State<DescriptionText> {
     'My_School_Menu-Study_Buddy.png'
   ];
   List carouselItemsDescs = [
-    "The student hub gives you direct and immediate access to the Student Affairs Office. Chat is available weekdays from 8am to 5pm, and on Saturdays from 8am to 12noon. We are here to address your concerns, answer questions, and provide information and referrals to provide you with an outstanding NU student experience.",
+    "We are here to address your concerns, answer questions, and provide information and referrals to provide you with an outstanding NU student experience.",
     "We listen. We help. We counsel. Drop us a message anytime so we can help each other improve through offering support, providing feedback and understanding, increasing self-confidence, and addressing negative self-talk.",
-    "Need access to library resources, research support, and study or assignment support?  We’ve got you.  Chat is available weekdays from 8am to 5pm, and on Saturdays from 8am to 12noon.",
-    "Need help in overcoming difficulties in a course? Our NU Blue Scholars are here to help you hurdle those. Choose from the list of scholars, courses, and availability. Be it one-on-one or in small groups, our Blue scholars are ready to help you see these difficulties through.",
+    "Need access to library resources, research support, and study or assignment support?  We’ve got you.",
+    "Need help in overcoming difficulties in a course? Our NU Blue Scholars are here to help you hurdle those.",
   ];
 
   Map descsMap;
@@ -89,11 +87,16 @@ class _DescriptionText extends State<DescriptionText> {
           Carousel(400, _mainCarouselItems),
           Consumer<CarouselModel>(builder: (context, carouselModel, child) {
             return Container(
-                margin: EdgeInsets.all(24),
+                margin: EdgeInsets.all(36),
                 child: Text(
                   descsMap[carouselModel.page],
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontFamily: 'Roboto',),
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                    color: Colors.white
+                  ),
                 ));
           })
         ]));

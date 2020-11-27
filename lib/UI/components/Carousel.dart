@@ -42,6 +42,7 @@ class Carousel extends StatelessWidget {
                       elevation: 3,
                       borderOnForeground: true,
                       semanticContainer: true,
+                      color: Colors.yellow,
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15.0)),
