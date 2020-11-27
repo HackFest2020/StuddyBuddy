@@ -30,7 +30,7 @@ class Carousel extends StatelessWidget {
         items: _items.map((i) {
           return GestureDetector(
             onTap: () {
-              //TODO: add tap action to carousel
+              Navigator.push(context, MaterialPageRoute(builder: (context) => carouselModel.navigateToPage()));
             },
             child: Builder(
               builder: (BuildContext context) {
@@ -42,6 +42,7 @@ class Carousel extends StatelessWidget {
                       elevation: 3,
                       borderOnForeground: true,
                       semanticContainer: true,
+                      color: Colors.yellow,
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15.0)),
