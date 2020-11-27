@@ -7,7 +7,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:study_buddy/UI/components/Forms.dart';
 import 'package:study_buddy/UI/sign_in_register/RegisterPage.dart';
 
-
 class SignInPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _SignInPage();
@@ -20,15 +19,13 @@ class _SignInPage extends State<SignInPage> {
   }
 
 //firebase auth google integ
-Future<void> _signInWithGoogle() async {
+  Future<void> _signInWithGoogle() async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     GoogleSignIn googleSignIn = GoogleSignIn();
     final acc = await googleSignIn.signIn();
     final auth = await acc.authentication;
     final credential = GoogleAuthProvider.credential(
-      accessToken: auth.accessToken,
-      idToken: auth.idToken
-    );
+        accessToken: auth.accessToken, idToken: auth.idToken);
     final res = await _auth.signInWithCredential(credential);
     return res.user;
   }
