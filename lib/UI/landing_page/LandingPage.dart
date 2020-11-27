@@ -16,63 +16,69 @@ class _LandingPage extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue[800],
-        drawer: Drawer(
-          child: DrawerWidget(),
+        body: Container(
+      height: MediaQuery.of(context).size.height,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [Colors.blue[700], Colors.indigo[800]],
         ),
-        body: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: [
-                SizedBox(height: 56),
-                Container(
-                    alignment: Alignment.centerRight,
-                    margin: EdgeInsets.fromLTRB(0, 0, 24, 16),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => AccountPage()));
-                      },
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage('./assets/img/woman.png'),
-                        backgroundColor: Colors.white,
-                      ),
-                    )),
-                SizedBox(height: 36),
-                Container(
+      ),
+      child: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: [
+              SizedBox(height: 56),
+              Container(
+                  alignment: Alignment.centerRight,
+                  margin: EdgeInsets.fromLTRB(0, 0, 24, 16),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AccountPage()));
+                    },
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('./assets/img/woman.png'),
+                      backgroundColor: Colors.white,
+                    ),
+                  )),
+              SizedBox(height: 36),
+              Container(
+                alignment: Alignment.centerLeft,
+                margin: EdgeInsets.fromLTRB(24, 0, 0, 0),
+                child: Text(
+                  "Welcome!",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 48,
+                      color: Colors.yellow),
+                ),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Container(
                   alignment: Alignment.centerLeft,
                   margin: EdgeInsets.fromLTRB(24, 0, 0, 0),
                   child: Text(
-                    "Welcome!",
+                    'Get Started',
                     style: TextStyle(
-                        fontWeight: FontWeight.w900,
-                        fontSize: 48,
-                        color: Colors.yellow),
-                  ),
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Container(
-                    alignment: Alignment.centerLeft,
-                    margin: EdgeInsets.fromLTRB(24, 0, 0, 0),
-                    child: Text(
-                      'Get Started',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w200,
-                          fontSize: 24,
-                          color: Colors.white),
-                    )),
-                SizedBox(
-                  height: 16,
-                ),
-                DescriptionText(),
-              ],
-            ),
+                        fontWeight: FontWeight.w200,
+                        fontSize: 24,
+                        color: Colors.white),
+                  )),
+              SizedBox(
+                height: 16,
+              ),
+              DescriptionText(),
+            ],
           ),
-        ));
+        ),
+      ),
+    ));
   }
 }
 

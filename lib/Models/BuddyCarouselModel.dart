@@ -5,7 +5,7 @@ import 'package:study_buddy/UI/lrc_online/LrcOnlinePage.dart';
 import 'package:study_buddy/UI/student_hub/StudentHubPage.dart';
 import 'package:study_buddy/UI/study_buddy/StudyBuddyPage.dart';
 
-class CarouselModel extends ChangeNotifier {
+class BuddyCarouselModel extends ChangeNotifier {
   int page = 0;
   Widget _widget;
 
