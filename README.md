@@ -1,6 +1,6 @@
 # study_buddy
 
-A new Flutter project.
+A new Flutter project. Maureen Branch
 
 ## Getting Started
 
