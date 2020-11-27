@@ -1,12 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:study_buddy/views/home.dart';
-import 'package:study_buddy/views/signIn.dart';
+import 'package:study_buddy/screens/homepage.dart';
+import 'package:study_buddy/screens/loginpage.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+void main() {
   runApp(MyApp());
 }
 
@@ -15,26 +13,54 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MainScreen(),
+      home: LandingPage(),
     );
   }
 }
 
-class MainScreen extends StatelessWidget {
+class LandingPage extends StatelessWidget {
+
+  final Future<FirebaseApp> _init = Firebase.initializeApp();
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<User>(
-      stream: FirebaseAuth.instance.authStateChanges(),
+    return FutureBuilder(
+      future: _init,
       builder: (context, snapshot) {
-        if(snapshot.hasData && snapshot.data != null) {
-          return HomePage();
+        if(snapshot.hasError) {
+          return Scaffold(
+            body: Center(
+              child: Text("Error: ${snapshot.error}"),
+            ),
+          );
         }
-        return LoginPage();
-      }
+        if (snapshot.connectionState == ConnectionState.done) {
+          // return HomePage();
+          return StreamBuilder(
+            stream: FirebaseAuth.instance.authStateChanges(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.active) {
+                User user = snapshot.data;
+                if(user == null) {
+                  return LoginPage();
+                }
+                else {
+                  return HomePage();
+                }
+              }
+          return Scaffold(
+             body: Center(
+               child: Text("Checking Authentication.."),
+                 ),
+            );
+          }
+         );
+        }
+        return Scaffold(
+          body: Center(
+            child: Text("Connecting to the app.."),
+            ),
+        );
+      },
     );
   }
 }
