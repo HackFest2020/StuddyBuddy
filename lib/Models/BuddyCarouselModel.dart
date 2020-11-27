@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-import 'package:study_buddy/UI/kumustahan/KumustahanPage.dart';
-import 'package:study_buddy/UI/lrc_online/LrcOnlinePage.dart';
-import 'package:study_buddy/UI/student_hub/StudentHubPage.dart';
-import 'package:study_buddy/UI/study_buddy/StudyBuddyPage.dart';
+import 'package:study_buddy/UI/study_buddy/BuddyPage.dart';
+
 
 class BuddyCarouselModel extends ChangeNotifier {
   int page = 0;
@@ -16,14 +14,10 @@ class BuddyCarouselModel extends ChangeNotifier {
 
   Widget navigateToPage() {
     if (page == 0) {
-      _widget = StudentHubPage();
+      _widget = BuddyPage(); //TODO: not final
     } else if (page == 1) {
-      _widget = KumustahanPage();
-    } else if (page == 2) {
-      _widget = LrcOnlinePage();
-    } else if (page == 3) {
-      _widget = StudyBuddyPage();
-    }
+      _widget = BuddyPage(); //TODO: not final
+    } 
     return _widget;
   }
 }

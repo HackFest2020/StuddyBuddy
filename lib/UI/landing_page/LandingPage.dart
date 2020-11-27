@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:study_buddy/UI/components/Carousel.dart';
-import 'package:study_buddy/UI/components/Drawer.dart';
 import 'package:study_buddy/Models/CarouselModel.dart';
 import 'package:study_buddy/UI/account_page/AccountPage.dart';
 
