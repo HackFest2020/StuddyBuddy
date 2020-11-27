@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:study_buddy/landing_page/LandingPage.dart';
+import 'package:study_buddy/UI/landing_page/LandingPage.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
