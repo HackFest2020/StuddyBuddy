@@ -24,7 +24,6 @@ class CarouselModel extends ChangeNotifier {
     } else if (page == 3) {
       _widget = StudyBuddyPage();
     }
-
     return _widget;
   }
 }
