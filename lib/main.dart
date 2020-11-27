@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:study_buddy/UI/landing_page/LandingPage.dart';
 import 'package:study_buddy/UI/sign_in_register/SignInPage.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //TODO: uncomment code below after firebase is set up
   //await Firebase.initializeApp();
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.amber,
       ),
-      home: SignInPage(),
+      home: _first,
     );
   }
 }

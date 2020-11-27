@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LandingPage extends StatelessWidget { //StudentDashboard
+class LandingPage extends StatelessWidget {
+  //StudentDashboard
   Color primaryBlue = Colors.blue[900];
 
   Widget cardLists = ListView(
@@ -9,29 +10,33 @@ class LandingPage extends StatelessWidget { //StudentDashboard
           margin: EdgeInsets.fromLTRB(20.0, 0, 0, 0),
           child: Row(
             children: [
-              RaisedButton(
+              FlatButton(
+                padding: EdgeInsets.fromLTRB(0, 0, 2, 0),
                 onPressed: () {},
                 child: Text(
                   'My School',
-                  style: TextStyle(color: Colors.amber),
+                  style: TextStyle(color: Colors.blue[900], fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                color: Colors.blue[900],
+                color: Colors.transparent,
               ),
-              RaisedButton(
+              FlatButton(
+                padding: EdgeInsets.fromLTRB(0, 0, 2, 0),
                 onPressed: () {},
                 child: Text(
                   'Announcements',
-                  style: TextStyle(color: Colors.amber),
+                  style: TextStyle(color: Colors.blue[900], fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                color: Colors.blue[900],
+                color: Colors.transparent,
               ),
-              RaisedButton(
+              FlatButton(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                minWidth: 5.0,
                 onPressed: () {},
                 child: Text(
                   'About',
-                  style: TextStyle(color: Colors.amber),
+                  style: TextStyle(color: Colors.blue[900], fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                color: Colors.blue[900],
+                color: Colors.transparent,
               )
             ],
           )),
@@ -142,25 +147,63 @@ class LandingPage extends StatelessWidget { //StudentDashboard
     ),
   );
 
+  //Supposed to be Help Icon
+  Widget myEndDrawer = Drawer(
+      child: ListView(
+    children: [
+      Container(
+        margin: EdgeInsets.all(10.0),
+        child: DrawerHeader(
+          decoration: BoxDecoration(
+            color: Colors.blue[900],
+            shape: BoxShape.rectangle,
+          ),
+          child: ListView(
+            physics: NeverScrollableScrollPhysics(),
+            children: [
+              Text('Featured Help',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.white)),
+              FlatButton(
+                child: Text('How to use My School?', style: TextStyle(color: Colors.white, fontSize: 15)),
+                color: Colors.transparent,
+                onPressed: (){},
+              ),
+              FlatButton(
+                child: Text("What's new in My School?", style: TextStyle(color: Colors.white, fontSize: 15)),
+                color: Colors.transparent,
+                onPressed: (){},
+              ),
+              FlatButton(
+                child: Text('Downloadable Files', style: TextStyle(color: Colors.white, fontSize: 15)),
+                color: Colors.transparent,
+                onPressed: (){},
+              ),
+            ],
+          ),
+        ),
+      ),
+    ]
+  ));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: myDrawer,
+      endDrawer: myEndDrawer,
       appBar: AppBar(
         title: Text('My School',
             style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.blue[900],
         iconTheme: IconThemeData(color: Colors.amber),
         actions: [
-          IconButton(
+          Builder(
+            builder: (context) => IconButton(
             icon: Icon(Icons.help_outline),
-            color: Colors.amber,
-            onPressed: () {
-              print('Help Clicked!');
-            },
-          )
+            onPressed: () => Scaffold.of(context).openEndDrawer()
+            )
+            ),
         ],
       ),
-      drawer: myDrawer,
       body: cardLists,
       floatingActionButton: FloatingActionButton(
         focusElevation: 5,
