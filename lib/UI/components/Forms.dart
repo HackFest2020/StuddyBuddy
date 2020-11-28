@@ -16,18 +16,6 @@ class _SignInFormState extends State<SignInForm> {
   String _email;
   String _password;
 
-  Future<void> _signIn() async {
-    try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: _email, password: _password);
-      print("User: $userCredential");
-    } on FirebaseAuthException catch (e) {
-      print("Error: $e");
-    } catch (e) {
-      print("Error: $e");
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -35,6 +23,7 @@ class _SignInFormState extends State<SignInForm> {
       child: Column(
         children: <Widget>[
           TextFormField(
+            textInputAction: TextInputAction.next,
             onChanged: (value) {
               _email = value;
               print("Email: $value");
@@ -84,13 +73,27 @@ class _SignInFormState extends State<SignInForm> {
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
                   colors: [Colors.lightBlueAccent[100], Colors.blue[700]]),
-              onPressed: () {
+              onPressed: () async {
+                FocusScope.of(context).requestFocus(FocusNode());
                 if (_formKey.currentState.validate()) {
-                  _signIn();
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (context) => LandingPage()),
-                      (route) => false);
+                  try {
+                    await FirebaseAuth.instance.signInWithEmailAndPassword(
+                        email: _email, password: _password);
+
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => LandingPage()),
+                        (route) => false);
+                  } on FirebaseAuthException catch (e) {
+                    Scaffold.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: Colors.red,
+                        content: Text('$e'),
+                      ),
+                    );
+                  } catch (e) {
+                    print("Error: $e");
+                  }
                 }
               })
         ],
@@ -113,18 +116,6 @@ class _RegisterFormState extends State<RegisterForm> {
   List _userTypes = ["Student", "Blue Scholar", "OSA", "Guidance Counselor"];
   String _dropdownValue = 'Student';
 
-  Future<void> _createUser() async {
-    try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: _email, password: _password);
-      print("User: $userCredential");
-    } on FirebaseAuthException catch (e) {
-      print("Error: $e");
-    } catch (e) {
-      print("Error: $e");
-    }
-  }
-
   @override
   void initState() {
     super.initState();
@@ -137,6 +128,7 @@ class _RegisterFormState extends State<RegisterForm> {
       child: Column(
         children: <Widget>[
           TextFormField(
+            textInputAction: TextInputAction.next,
             onChanged: (value) {
               _email = value;
               print("Email: $value");
@@ -156,6 +148,7 @@ class _RegisterFormState extends State<RegisterForm> {
           ),
           SizedBox(height: 16),
           TextFormField(
+            textInputAction: TextInputAction.next,
             onChanged: (value) {
               _password = value;
               print("password: $value");
@@ -226,13 +219,26 @@ class _RegisterFormState extends State<RegisterForm> {
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
                   colors: [Colors.lightBlueAccent[100], Colors.blue[700]]),
-              onPressed: () {
+              onPressed: () async {
+                FocusScope.of(context).requestFocus(FocusNode());
                 if (_formKey.currentState.validate()) {
-                  _createUser();
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (context) => LandingPage()),
-                      (route) => false);
+                  try {
+                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                        email: _email, password: _password);
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => LandingPage()),
+                        (route) => false);
+                  } on FirebaseAuthException catch (e) {
+                    Scaffold.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: Colors.red,
+                        content: Text('$e'),
+                      ),
+                    );
+                  } catch (e) {
+                    print("Error: $e");
+                  }
                 }
               })
         ],
