@@ -19,7 +19,7 @@ class BorrowReturn extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: Container(
-                      child: Text('FAQS: Books',
+                      child: Text('FAQs: Books',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontWeight: FontWeight.w900,
