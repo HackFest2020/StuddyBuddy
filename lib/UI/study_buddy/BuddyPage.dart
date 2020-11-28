@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:study_buddy/UI/components/ProgramCard.dart';
+import 'package:study_buddy/firestore/KumustahanChatScreen.dart';
+import 'package:study_buddy/firestore/StudyBuddyChatScreen.dart';
 
 class BuddyPage extends StatelessWidget {
   String _userName;
@@ -149,7 +151,11 @@ class BuddyPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(
+               builder: (context) => StudyBuddyChatScreen(title: 'Study Buddy',)));
+        },
         child: Icon(Icons.message),
       ),
     );
