@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:study_buddy/Models/BuddyCarouselModel.dart';
 import 'package:study_buddy/UI/components/BuddyCarousel.dart';
 import 'package:provider/provider.dart';
+import 'package:study_buddy/UI/components/ProgramCard.dart';
+import 'package:study_buddy/UI/study_buddy/StudyBuddyProgramsPage.dart';
 
 class StudyBuddyPage extends StatefulWidget {
   StudyBuddyPage({Key key}) : super(key: key);
@@ -63,7 +65,7 @@ class _StudyBuddyPageState extends State<StudyBuddyPage> {
               child: Container(
                 padding: EdgeInsets.all(16),
                 child: Column(children: [
-                  SizedBox(height: 24 ),
+                  SizedBox(height: 24),
                   Text(
                     'Meet the Blue Scholars',
                     style: TextStyle(
@@ -74,6 +76,8 @@ class _StudyBuddyPageState extends State<StudyBuddyPage> {
                   SizedBox(height: 16),
                   BuddyCarousel(200, _studyBuddyList),
                   SizedBox(height: 16),
+                  Divider(),
+                  SizedBox(height: 16),
                   Text(
                     'Find your Study Buddy',
                     style: TextStyle(
@@ -81,7 +85,67 @@ class _StudyBuddyPageState extends State<StudyBuddyPage> {
                       fontSize: 24,
                     ),
                   ),
-                  SizedBox(height: 16),
+                  SizedBox(height: 8),
+                  Text(
+                    'Choose your department',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w300,
+                      fontSize: 16,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    StudyBuddyProgramsPage('COE')));
+                      },
+                      child: ProgramCard('ccs.png', Colors.orange, 125, 'CCS')),
+                  SizedBox(height: 8),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    StudyBuddyProgramsPage('CAS')));
+                      },
+                      child:
+                          ProgramCard('cas.png', Colors.pink[300], 125, 'CAS')),
+                  SizedBox(height: 8),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    StudyBuddyProgramsPage('COE')));
+                      },
+                      child: ProgramCard(
+                          'coe.png', Colors.lightBlue[200], 125, 'COE')),
+                  SizedBox(height: 8),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    StudyBuddyProgramsPage('CBMA')));
+                      },
+                      child: ProgramCard('cbma.png', Colors.blue, 125, 'CBMA')),
+                  SizedBox(height: 8),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    StudyBuddyProgramsPage('APC')));
+                      },
+                      child: ProgramCard(
+                          'apc.png', Colors.indigo[700], 125, 'APC')),
                 ]),
               ),
             ),
