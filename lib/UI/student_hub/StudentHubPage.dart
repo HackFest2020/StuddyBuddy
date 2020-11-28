@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:study_buddy/UI/components/Drawer.dart';
+import 'package:study_buddy/firestore/chat_mainScreen.dart';
 import 'package:study_buddy/firestore/message_form.dart';
 
 class StudentHubPage extends StatefulWidget {
@@ -180,7 +181,7 @@ class _StudentHubPageState extends State<StudentHubPage> {
         onPressed: () {
           Navigator.push(context,
               MaterialPageRoute(
-               builder: (context) => MessageForm()));
+               builder: (context) => ChatMainScreen(title: 'Chat',)));
         },
       ),
     );

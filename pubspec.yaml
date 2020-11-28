@@ -30,12 +30,8 @@ dependencies:
   firebase_core: ^0.5.2+1
   firebase_auth: ^0.18.3+1
   google_sign_in: ^4.5.6
-<<<<<<< HEAD
   cloud_firestore: ^0.14.3+1
-  shared_preferences: ^0.5.12+4
-=======
   provider: ^4.0.1
->>>>>>> a7ea5243a15e8adbc08cdd3b7c72eed74c3c118d
 
 dev_dependencies:
   flutter_test:
