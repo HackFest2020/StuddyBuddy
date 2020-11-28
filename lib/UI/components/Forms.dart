@@ -4,7 +4,6 @@ import 'package:study_buddy/UI/landing_page/LandingPage.dart';
 
 import 'package:email_validator/email_validator.dart';
 
-
 import 'Buttons.dart';
 
 class SignInForm extends StatefulWidget {
@@ -19,15 +18,15 @@ class _SignInFormState extends State<SignInForm> {
 
   Future<void> _signIn() async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: _email, password: _password);
       print("User: $userCredential");
     } on FirebaseAuthException catch (e) {
       print("Error: $e");
-    } catch(e) {
+    } catch (e) {
       print("Error: $e");
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +54,7 @@ class _SignInFormState extends State<SignInForm> {
           ),
           SizedBox(height: 16),
           TextFormField(
-              onChanged: (value) {
+            onChanged: (value) {
               _password = value;
               print("password: $value");
             },
@@ -86,12 +85,13 @@ class _SignInFormState extends State<SignInForm> {
                   end: Alignment.centerRight,
                   colors: [Colors.lightBlueAccent[100], Colors.blue[700]]),
               onPressed: () {
-                if (_formKey.currentState.validate())
-                     _signIn();
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => LandingPage()),
-                    (route) => false);
+                if (_formKey.currentState.validate()) {
+                  _signIn();
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => LandingPage()),
+                      (route) => false);
+                }
               })
         ],
       ),
@@ -110,15 +110,24 @@ class _RegisterFormState extends State<RegisterForm> {
   String _password;
   String _cPassword;
 
+  List _userTypes = ["Student", "Blue Scholar", "OSA", "Guidance Counselor"];
+  String _dropdownValue = 'Student';
+
   Future<void> _createUser() async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email, password: _password);
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: _email, password: _password);
       print("User: $userCredential");
     } on FirebaseAuthException catch (e) {
       print("Error: $e");
-    } catch(e) {
+    } catch (e) {
       print("Error: $e");
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
@@ -127,7 +136,8 @@ class _RegisterFormState extends State<RegisterForm> {
       key: _formKey,
       child: Column(
         children: <Widget>[
-          TextFormField(onChanged: (value) {
+          TextFormField(
+            onChanged: (value) {
               _email = value;
               print("Email: $value");
             },
@@ -158,8 +168,8 @@ class _RegisterFormState extends State<RegisterForm> {
             obscureText: true,
             enableSuggestions: false,
             autocorrect: false,
-            validator: (value) {
-              if(_password.length < 8) {
+            validator: (_password) {
+              if (_password.length < 8) {
                 return "Password must be 8+ characters";
               } else if (_password.isEmpty) {
                 return "Password can't be empty";
@@ -177,7 +187,7 @@ class _RegisterFormState extends State<RegisterForm> {
             enableSuggestions: false,
             autocorrect: false,
             validator: (val) {
-              if(_password != val) {
+              if (_password != val) {
                 return "Passwords must be the same";
               } else if (val.isEmpty) {
                 return "Password can't be empty";
@@ -185,25 +195,46 @@ class _RegisterFormState extends State<RegisterForm> {
             },
           ),
           SizedBox(height: 24),
-          GradientButton(
-            child: Text(
-              'REGISTER',
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          DropdownButton(
+            hint: Text('User Type'),
+            value: _dropdownValue,
+            underline: Container(
+              color: Colors.blue,
+              height: 2,
             ),
-            gradient: LinearGradient(
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                colors: [Colors.lightBlueAccent[100], Colors.blue[700]]),
-            onPressed: () {
-                if (_formKey.currentState.validate())
-                     _createUser();
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => LandingPage()),
-                    (route) => false);
-              }
-          )
+            onChanged: (newValue) {
+              setState(() {
+                _dropdownValue = newValue;
+              });
+            },
+            items: _userTypes.map<DropdownMenuItem<String>>((value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            //style:,
+          ),
+          SizedBox(height: 24),
+          GradientButton(
+              child: Text(
+                'REGISTER',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [Colors.lightBlueAccent[100], Colors.blue[700]]),
+              onPressed: () {
+                if (_formKey.currentState.validate()) {
+                  _createUser();
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => LandingPage()),
+                      (route) => false);
+                }
+              })
         ],
       ),
     );
