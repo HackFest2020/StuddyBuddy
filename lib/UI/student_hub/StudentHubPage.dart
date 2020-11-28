@@ -1,7 +1,6 @@
-// import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:study_buddy/UI/components/Drawer.dart';
+import 'package:study_buddy/firestore/chat_mainScreen.dart';
 import 'package:study_buddy/UI/components/LearnMoreDialog.dart';
 import 'package:study_buddy/firestore/message_form.dart';
 
@@ -183,8 +182,9 @@ class _StudentHubPageState extends State<StudentHubPage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.message),
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => MessageForm()));
+          Navigator.push(context,
+              MaterialPageRoute(
+               builder: (context) => ChatMainScreen(title: 'Chat',)));
         },
       ),
     );
