@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:study_buddy/UI/components/Drawer.dart';
+import 'package:study_buddy/UI/components/LearnMoreDialog.dart';
 import 'package:study_buddy/firestore/message_form.dart';
 
 class StudentHubPage extends StatefulWidget {
@@ -74,12 +75,16 @@ class _StudentHubPageState extends State<StudentHubPage> {
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 16),
-                Text(
-                  'Announcements',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
-                  ),
+                Column(
+                  children: [
+                    Text(
+                      'Announcements',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 16),
                 SingleChildScrollView(
@@ -101,7 +106,7 @@ class _StudentHubPageState extends State<StudentHubPage> {
                               Text("Scholarship Application"),
                               SizedBox(height: 16),
                               OutlineButton(
-                                onPressed: () {},
+                                onPressed: () =>  ScholarDialog().build(context),
                                 child: Text('Learn More'),
                               ),
                             ],
@@ -122,7 +127,7 @@ class _StudentHubPageState extends State<StudentHubPage> {
                               Text("Enrollment Process"),
                               SizedBox(height: 16),
                               OutlineButton(
-                                onPressed: () {},
+                                onPressed: () => EnrollmentDialog().build(context),
                                 child: Text('Learn More'),
                               ),
                             ],
@@ -148,7 +153,7 @@ class _StudentHubPageState extends State<StudentHubPage> {
                 ),
                 SizedBox(height: 16),
                 Text(
-                  'email',
+                  'Email',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
@@ -178,9 +183,8 @@ class _StudentHubPageState extends State<StudentHubPage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.message),
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(
-               builder: (context) => MessageForm()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => MessageForm()));
         },
       ),
     );
