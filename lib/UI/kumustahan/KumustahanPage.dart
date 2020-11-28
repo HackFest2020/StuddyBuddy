@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study_buddy/UI/components/Drawer.dart';
+import 'package:study_buddy/firestore/KumustahanChatScreen.dart';
 
 class KumustahanPage extends StatefulWidget {
   KumustahanPage({Key key}) : super(key: key);
@@ -92,6 +93,11 @@ class _KumustahanPageState extends State<KumustahanPage> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.message),
+          onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(
+               builder: (context) => KumustahanChatScreen(title: 'Kumustahan',)));
+        },
       ),
     );
   }

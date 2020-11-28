@@ -7,8 +7,8 @@ import 'package:study_buddy/firestore/message_wall.dart';
 class ChatMainScreen extends StatefulWidget {
   ChatMainScreen({Key key, this.title}) : super(key: key);
 
-  final String title;
-  final store = FirebaseFirestore.instance.collection('chat_messages');
+  final String title; //chat_messages
+  final store = FirebaseFirestore.instance.collection('student_hub_messages');
 
   @override
   _ChatMainScreenState createState() => _ChatMainScreenState();
@@ -27,13 +27,6 @@ class _ChatMainScreenState extends State<ChatMainScreen> {
         _signedIn = false;
       }
       setState(() {});
-    });
-  }
-
- void _signOut() async {
-    await FirebaseAuth.instance.signOut();
-    setState(() {
-      _signedIn = false;
     });
   }
 
