@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:study_buddy/UI/components/Drawer.dart';
 import 'package:study_buddy/UI/components/LRC-FAQS.dart';
+import 'package:study_buddy/UI/components/LRCComponents.dart';
 
 class LrcOnlinePage extends StatefulWidget {
   LrcOnlinePage({Key key}) : super(key: key);
@@ -59,6 +60,19 @@ class _LrcOnlinePageState extends State<LrcOnlinePage> {
               padding: EdgeInsets.all(16),
               //alignment: Alignment.centerLeft,
               child: Column(children: [
+                SizedBox(height: 24),
+                Text(
+                  'Online Services Forms',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
+                ),
+                SizedBox(height: 15.0),
+                LRCComponents().lrcCard, //LRCFormsCarousel
+                SizedBox(height: 15.0),
+                Divider(),
+                SizedBox(height: 15.0),
                 Text(
                   'FAQs',
                   style: TextStyle(
@@ -158,8 +172,7 @@ class _LrcOnlinePageState extends State<LrcOnlinePage> {
                 SizedBox(height: 16),
                 Divider(),
                 SizedBox(height: 16),
-                SizedBox(height: 300), //TODO: fix sizedbox height once content is figured out
-
+                LRCComponents().lrcContactUs,
               ]),
             ),
           ),
