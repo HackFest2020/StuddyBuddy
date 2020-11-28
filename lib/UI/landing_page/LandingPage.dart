@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:study_buddy/UI/components/Carousel.dart';
@@ -37,17 +38,18 @@ class _LandingPage extends State<LandingPage> {
                       alignment: Alignment.centerRight,
                       margin: EdgeInsets.fromLTRB(0, 0, 24, 16),
                       child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AccountPage()));
+                        onTap: () async {
+                           await FirebaseAuth.instance.signOut();
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => AccountPage()));
                         },
                         child: CircleAvatar(
                           backgroundImage: AssetImage('./assets/img/woman.png'),
                           backgroundColor: Colors.white,
                         ),
-                      )),
+                      ),),
                   SizedBox(height: 36),
                   Container(
                     alignment: Alignment.centerLeft,

@@ -1,5 +1,8 @@
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:study_buddy/UI/components/Drawer.dart';
+import 'package:study_buddy/firestore/message_form.dart';
 
 class StudentHubPage extends StatefulWidget {
   StudentHubPage({Key key}) : super(key: key);
@@ -174,6 +177,11 @@ class _StudentHubPageState extends State<StudentHubPage> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.message),
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(
+               builder: (context) => MessageForm()));
+        },
       ),
     );
   }
