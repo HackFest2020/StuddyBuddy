@@ -85,7 +85,12 @@ class _KumustahanPageState extends State<KumustahanPage> {
                     ),
                   ),
                 ]),
-                SizedBox(height: 600), //TODO: change height once content is figured out
+                SizedBox(height: 16),
+                Divider(),
+                SizedBox(height: 16),
+                SizedBox(
+                    height:
+                        600), //TODO: change height once content is figured out
               ]),
             ),
           ),

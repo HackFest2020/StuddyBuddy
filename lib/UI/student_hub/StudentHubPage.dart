@@ -74,6 +74,8 @@ class _StudentHubPageState extends State<StudentHubPage> {
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 16),
+                Divider(),
+                SizedBox(height: 16),
                 Column(
                   children: [
                     Text(
@@ -136,6 +138,8 @@ class _StudentHubPageState extends State<StudentHubPage> {
                     ],
                   ),
                 ),
+                SizedBox(height: 16),
+                Divider(),
                 SizedBox(height: 16),
                 Text(
                   'Contact Us',
