@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:study_buddy/Models/CarouselModel.dart';
+import 'package:study_buddy/Models/BuddyCarouselModel.dart';
 
 //3rd party libraries
 import 'package:carousel_slider/carousel_slider.dart';
 
-class Carousel extends StatelessWidget {
+class BuddyCarousel extends StatelessWidget {
   double _height;
   List _items;
 
-  Carousel(double height, List items) {
+  BuddyCarousel(double height, List items) {
     _height = height;
     _items = items;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CarouselModel>(builder: (context, carouselModel, child) {
+    return Consumer<BuddyCarouselModel>(builder: (context, carouselModel, child) {
       return CarouselSlider(
         options: CarouselOptions(
             height: _height,
@@ -45,12 +45,15 @@ class Carousel extends StatelessWidget {
                       elevation: 10,
                       borderOnForeground: true,
                       semanticContainer: true,
-                      color: Colors.yellow,
+                      color: Colors.white,
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15.0)),
-                      child:
-                          Image.asset('./assets/img/' + i, fit: BoxFit.contain),
+                      child: Container(
+                          alignment: Alignment.center,
+                          margin: EdgeInsets.fromLTRB(0, 24, 0, 0),
+                          child: Image.asset('./assets/img/' + i,
+                              fit: BoxFit.contain)),
                     ));
               },
             ),

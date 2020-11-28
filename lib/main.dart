@@ -4,7 +4,6 @@ import 'package:study_buddy/UI/landing_page/LandingPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //TODO: uncomment code below after firebase is set up
   await Firebase.initializeApp();
   runApp(MyApp());
 }
@@ -21,6 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'My School',
       theme: ThemeData(
         primarySwatch: Colors.blue, 
+        fontFamily: 'Roboto',
       ),
       home: _first,
     );
