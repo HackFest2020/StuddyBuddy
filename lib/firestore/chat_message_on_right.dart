@@ -26,7 +26,6 @@ class ChatMessageOnRight extends StatelessWidget {
             )
           else
             SizedBox(width: 40),
-          SizedBox(width: 10),
           Container(
             constraints: BoxConstraints(
               maxWidth: 300,

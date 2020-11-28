@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:study_buddy/UI/landing_page/LandingPage.dart';
@@ -103,6 +104,7 @@ class _SignInFormState extends State<SignInForm> {
 }
 
 class RegisterForm extends StatefulWidget {
+  final store = FirebaseFirestore.instance.collection('users');
   @override
   _RegisterFormState createState() => _RegisterFormState();
 }
@@ -123,6 +125,7 @@ class _RegisterFormState extends State<RegisterForm> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Form(
       key: _formKey,
       child: Column(
@@ -223,6 +226,14 @@ class _RegisterFormState extends State<RegisterForm> {
                 FocusScope.of(context).requestFocus(FocusNode());
                 if (_formKey.currentState.validate()) {
                   try {
+                      final user = FirebaseAuth.instance.currentUser;
+                      if (user == null) {
+                        await widget.store.add({
+                          'email': _email,
+                          'user_type' : _dropdownValue,
+                          'password': _password
+                        });
+                      }
                     await FirebaseAuth.instance.createUserWithEmailAndPassword(
                         email: _email, password: _password);
                     Navigator.pushAndRemoveUntil(
