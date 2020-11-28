@@ -9,6 +9,7 @@ class MessageWall extends StatelessWidget {
   final List<QueryDocumentSnapshot> messages;
   final ValueChanged<String> onDelete;
 
+
   const MessageWall({
     Key key,
     this.messages,
@@ -23,6 +24,7 @@ class MessageWall extends StatelessWidget {
     return authorId != previousId;
   }
 
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -30,7 +32,6 @@ class MessageWall extends StatelessWidget {
       itemBuilder: (context, index) {
         final data = messages[index].data();
         final user = FirebaseAuth.instance.currentUser;
-
         if (user != null && user.uid == data['author_id']) {
           return Dismissible(
             onDismissed: (_) {
@@ -43,7 +44,6 @@ class MessageWall extends StatelessWidget {
             ),
           );
         }
-
         return ChatMessageOnRight(
           index: index,
           data: data,

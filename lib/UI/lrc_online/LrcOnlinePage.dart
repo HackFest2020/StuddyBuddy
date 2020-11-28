@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:study_buddy/UI/components/Drawer.dart';
 import 'package:study_buddy/UI/components/LRC-FAQS.dart';
 import 'package:study_buddy/UI/components/LRCComponents.dart';
 

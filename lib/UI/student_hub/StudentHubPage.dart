@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:study_buddy/UI/components/Drawer.dart';
 import 'package:study_buddy/firestore/StudentHubChatScreen.dart';
 import 'package:study_buddy/UI/components/LearnMoreDialog.dart';
-import 'package:study_buddy/firestore/message_form.dart';
 
 class StudentHubPage extends StatefulWidget {
   StudentHubPage({Key key}) : super(key: key);

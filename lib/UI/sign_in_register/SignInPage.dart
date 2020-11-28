@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/button_view.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:study_buddy/UI/components/Forms.dart';
 import 'package:study_buddy/UI/sign_in_register/RegisterPage.dart';
@@ -39,7 +41,7 @@ class _SignInPage extends State<SignInPage> {
       child: Scaffold(
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(48.0),
+            padding: const EdgeInsets.all(40.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -65,25 +67,26 @@ class _SignInPage extends State<SignInPage> {
                     child: SizedBox(),
                   ),
                   Expanded(
-                    flex: 2,
-                    child: RaisedButton(
-                      child: Text('Google'),
-                      color: Colors.white,
-                      onPressed: _signInWithGoogle,
-                    ),
+                    flex: 30,
+                       child: Center(
+                         child: Column(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    SignInButton(
+                                    Buttons.Google,
+                                    onPressed: _signInWithGoogle,
+                              ),
+                               SignInButton(
+                                    Buttons.Twitter,
+                                    onPressed: () {},
+                              )
+                            ],
+                         ),
+                       ),
                   ),
                   Expanded(
                     flex: 1,
                     child: SizedBox(),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: RaisedButton(
-                      child: Text('Twitter'),
-                      //child: Icon(Icons.group),
-                      color: Colors.white,
-                      onPressed: () {},
-                    ),
                   ),
                   Expanded(
                     flex: 1,
