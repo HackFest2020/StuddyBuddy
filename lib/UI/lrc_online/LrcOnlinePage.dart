@@ -76,6 +76,10 @@ class _LrcOnlinePageState extends State<LrcOnlinePage> {
                         children: [
                           Text(
                             "How to borrow and return book/s?",
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                           SizedBox(height: 8),
                           OutlineButton(
@@ -101,10 +105,19 @@ class _LrcOnlinePageState extends State<LrcOnlinePage> {
                         children: [
                           Text(
                             "How to get a library card?",
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                           SizedBox(height: 8),
                           OutlineButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => BorrowReturn()));
+                            },
                             child: Text('Learn More'),
                           ),
                         ],
@@ -121,10 +134,20 @@ class _LrcOnlinePageState extends State<LrcOnlinePage> {
                         children: [
                           Text(
                             "How to access electronic resources at home?",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                           SizedBox(height: 8),
                           OutlineButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => BorrowReturn()));
+                            },
                             child: Text('Learn More'),
                           ),
                         ],

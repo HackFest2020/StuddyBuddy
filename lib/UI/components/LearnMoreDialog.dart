@@ -22,6 +22,7 @@ class ScholarDialog {
                 child: Padding(
                   padding: const EdgeInsets.all(25.0),
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
