@@ -33,7 +33,7 @@ class _KumustahanPageState extends State<KumustahanPage> {
                           textAlign: TextAlign.end,
                           style: TextStyle(
                               fontWeight: FontWeight.w900,
-                              fontSize: 36,
+                              fontSize: 33,
                               color: Colors.blue[800]))),
                 ),
                 Expanded(
