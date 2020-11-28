@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:study_buddy/UI/components/Drawer.dart';
 import 'package:study_buddy/firestore/KumustahanChatScreen.dart';
 
 class KumustahanPage extends StatefulWidget {

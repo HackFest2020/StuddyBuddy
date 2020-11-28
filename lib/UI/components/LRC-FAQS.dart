@@ -102,7 +102,7 @@ class BorrowReturn extends StatelessWidget {
                       Row(children: [
                         Icon(Icons.circle, size: 10,),
                         SizedBox(width: 5.0),
-                        Text('How many books can a student borrow?', style: TextStyle(fontFamily: 'Roboto', fontSize: 17, fontWeight: FontWeight.bold),),
+                        Text('How many books can a student borrow?', style: TextStyle(fontFamily: 'Roboto', fontSize: 16, fontWeight: FontWeight.bold),),
                       ],),
                       Container(
                         margin: EdgeInsets.fromLTRB(30, 5, 10, 10),

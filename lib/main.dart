@@ -11,7 +11,6 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  Widget _first = LandingPage();
 
   @override
   Widget build(BuildContext context) {
