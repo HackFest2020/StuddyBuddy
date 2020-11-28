@@ -127,6 +127,8 @@ class LRCComponents {
               'Telephone number of NU: (049) 572 3356\nLocal number of NU LRC: 3136')
         ]),
         SizedBox(height: 10),
+        Divider(),
+        SizedBox(height: 10),
         Text(
           'LIBRARY STAFF CONTACT DETAILS',
           style: TextStyle(

@@ -150,7 +150,7 @@ class _StudentHubPageState extends State<StudentHubPage> {
                 ),
                 SizedBox(height: 16),
                 CircleAvatar(
-                  backgroundImage: AssetImage('./assets/img/woman.png'),
+                  backgroundImage: AssetImage('./assets/img/sao.png'),
                   backgroundColor: Colors.yellow,
                   radius: 40,
                 ),

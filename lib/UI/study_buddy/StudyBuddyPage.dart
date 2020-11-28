@@ -1,24 +1,34 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:study_buddy/Models/BuddyCarouselModel.dart';
+import 'package:study_buddy/Models/TutorsModel.dart';
 import 'package:study_buddy/UI/components/BuddyCarousel.dart';
 import 'package:provider/provider.dart';
 import 'package:study_buddy/UI/components/ProgramCard.dart';
 import 'package:study_buddy/UI/study_buddy/StudyBuddyProgramsPage.dart';
 
-class StudyBuddyPage extends StatefulWidget {
-  StudyBuddyPage({Key key}) : super(key: key);
+class StudyBuddyPage extends StatelessWidget {
+  List _blueScholarIdList = List();
 
-  @override
-  _StudyBuddyPageState createState() => _StudyBuddyPageState();
-}
-
-class _StudyBuddyPageState extends State<StudyBuddyPage> {
-  List _studyBuddyList = ["man.png", "woman.png"];
+  final firestoreInstance = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<BuddyCarouselModel>(
-      create: (context) => BuddyCarouselModel(),
+    Future<void> populateList() {
+      firestoreInstance.collection("tutors").get().then((querySnapshot) {
+        querySnapshot.docs.forEach((result) {
+          _blueScholarIdList.add(result.id);
+          return;
+        });
+      });
+    }
+
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<BuddyCarouselModel>(
+            create: (context) => BuddyCarouselModel()),
+        ChangeNotifierProvider<TutorModel>(create: (context) => TutorModel())
+      ],
       child: Scaffold(
         backgroundColor: Colors.yellow,
         appBar: AppBar(
@@ -74,7 +84,16 @@ class _StudyBuddyPageState extends State<StudyBuddyPage> {
                     ),
                   ),
                   SizedBox(height: 16),
-                  BuddyCarousel(200, _studyBuddyList),
+                  FutureBuilder(
+                    future: populateList(),
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.hasData) {
+                        return _blueScholarWidget(_blueScholarIdList);
+                      } else {
+                        return CircularProgressIndicator(); // Display a Circular Progress Indicator if the data is not fetched
+                      }
+                    },
+                  ),
                   SizedBox(height: 16),
                   Divider(),
                   SizedBox(height: 16),
@@ -153,5 +172,18 @@ class _StudyBuddyPageState extends State<StudyBuddyPage> {
         ),
       ),
     );
+  }
+}
+
+class _blueScholarWidget extends StatelessWidget {
+  List _list;
+
+  _blueScholarWidget(List list) {
+    _list = list;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BuddyCarousel(200, _list);
   }
 }

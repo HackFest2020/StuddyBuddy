@@ -16,7 +16,8 @@ class BuddyCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<BuddyCarouselModel>(builder: (context, carouselModel, child) {
+    return Consumer<BuddyCarouselModel>(
+        builder: (context, carouselModel, child) {
       return CarouselSlider(
         options: CarouselOptions(
             height: _height,
@@ -25,7 +26,6 @@ class BuddyCarousel extends StatelessWidget {
             enlargeCenterPage: true,
             onPageChanged: (index, reason) {
               carouselModel.changeDescription(index);
-              //DescriptionText().changeDescription(index);
             }),
         items: _items.map((i) {
           return GestureDetector(
