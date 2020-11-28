@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study_buddy/UI/components/Drawer.dart';
+import 'package:study_buddy/UI/components/LRC-FAQS.dart';
 
 class LrcOnlinePage extends StatefulWidget {
   LrcOnlinePage({Key key}) : super(key: key);
@@ -78,7 +79,12 @@ class _LrcOnlinePageState extends State<LrcOnlinePage> {
                           ),
                           SizedBox(height: 8),
                           OutlineButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => BorrowReturn()));
+                            },
                             child: Text('Learn More'),
                           ),
                         ],
@@ -130,6 +136,7 @@ class _LrcOnlinePageState extends State<LrcOnlinePage> {
                 Divider(),
                 SizedBox(height: 16),
                 SizedBox(height: 300), //TODO: fix sizedbox height once content is figured out
+
               ]),
             ),
           ),
