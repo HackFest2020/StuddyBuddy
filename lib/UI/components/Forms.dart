@@ -40,6 +40,9 @@ class _SignInFormState extends State<SignInForm> {
               } else if (EmailValidator.validate(_email) == false) {
                 return 'Not a valid email';
               }
+              else {
+                return null;
+              }
             },
           ),
           SizedBox(height: 16),
@@ -170,6 +173,9 @@ class _RegisterFormState extends State<RegisterForm> {
               } else if (_password.isEmpty) {
                 return "Password can't be empty";
               }
+              else {
+                return null;
+              }
             },
           ),
           SizedBox(height: 16),
@@ -182,6 +188,7 @@ class _RegisterFormState extends State<RegisterForm> {
             obscureText: true,
             enableSuggestions: false,
             autocorrect: false,
+            // ignore: missing_return
             validator: (val) {
               if (_password != val) {
                 return "Passwords must be the same";

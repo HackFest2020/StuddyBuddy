@@ -11,7 +11,6 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  Widget _first = LandingPage();
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +43,6 @@ final Future<FirebaseApp> _init = Firebase.initializeApp();
           );
         }
         if (snapshot.connectionState == ConnectionState.done) {
-          // return HomePage();
           return StreamBuilder(
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: (context, snapshot) {
@@ -61,7 +59,7 @@ final Future<FirebaseApp> _init = Firebase.initializeApp();
               }
           return Scaffold(
              body: Center(
-               child: Text("Checking Authentication.."),
+               child: Text("Checking Authentication..."),
                  ),
             );
           }
@@ -69,7 +67,7 @@ final Future<FirebaseApp> _init = Firebase.initializeApp();
         }
         return Scaffold(
           body: Center(
-            child: Text("Connecting to the app.."),
+            child: Text("Connecting to the app..."),
             ),
         );
       },

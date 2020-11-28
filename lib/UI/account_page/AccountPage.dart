@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:study_buddy/UI/sign_in_register/SignInPage.dart';
 
 class AccountPage extends StatelessWidget {
-  //const AccountPage({Key key}) : super(key: key);
 
   String _userName = 'Maureen';
   String _name = 'Maureen Kate R. Dadap';

@@ -67,9 +67,7 @@ class _MessageFormState extends State<MessageForm> {
               ),
             ),
             onPressed: _message == null || _message.isEmpty ? null : _onPressed,
-            fillColor: _message == null || _message.isEmpty
-                ? Colors.blueGrey
-                : Theme.of(context).primaryColor //WORKING HERE!
+            fillColor: _message == null || _message.isEmpty ? Colors.blueGrey : Theme.of(context).primaryColor //WORKING HERE!
           ),
         ],
       ),
