@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 class TutorModel extends ChangeNotifier {
   List tutorList;
 
-  
+  changeTutorList() {
+    notifyListeners();
+  }  
 
 }
 

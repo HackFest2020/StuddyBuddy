@@ -1,3 +1,4 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:study_buddy/Models/BuddyCarouselModel.dart';
@@ -8,20 +9,12 @@ import 'package:study_buddy/UI/components/ProgramCard.dart';
 import 'package:study_buddy/UI/study_buddy/StudyBuddyProgramsPage.dart';
 
 class StudyBuddyPage extends StatelessWidget {
-  List _blueScholarIdList = List();
+  List _blueScholarIdList = [];
 
   final firestoreInstance = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
-    Future<void> populateList() {
-      firestoreInstance.collection("tutors").get().then((querySnapshot) {
-        querySnapshot.docs.forEach((result) {
-          _blueScholarIdList.add(result.id);
-          return;
-        });
-      });
-    }
 
     return MultiProvider(
       providers: [
@@ -84,16 +77,7 @@ class StudyBuddyPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16),
-                  FutureBuilder(
-                    future: populateList(),
-                    builder: (BuildContext context, AsyncSnapshot snapshot) {
-                      if (snapshot.hasData) {
-                        return _blueScholarWidget(_blueScholarIdList);
-                      } else {
-                        return CircularProgressIndicator(); // Display a Circular Progress Indicator if the data is not fetched
-                      }
-                    },
-                  ),
+                  //TODO: carousel here
                   SizedBox(height: 16),
                   Divider(),
                   SizedBox(height: 16),
@@ -172,18 +156,5 @@ class StudyBuddyPage extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class _blueScholarWidget extends StatelessWidget {
-  List _list;
-
-  _blueScholarWidget(List list) {
-    _list = list;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return BuddyCarousel(200, _list);
   }
 }
