@@ -59,7 +59,7 @@ final Future<FirebaseApp> _init = Firebase.initializeApp();
               }
           return Scaffold(
              body: Center(
-               child: Text("Checking Authentication..."),
+               child: CircularProgressIndicator(),
                  ),
             );
           }
@@ -67,7 +67,7 @@ final Future<FirebaseApp> _init = Firebase.initializeApp();
         }
         return Scaffold(
           body: Center(
-            child: Text("Connecting to the app..."),
+            child: CircularProgressIndicator(),
             ),
         );
       },

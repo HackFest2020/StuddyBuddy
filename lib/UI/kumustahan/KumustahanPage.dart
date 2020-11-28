@@ -57,6 +57,7 @@ class _KumustahanPageState extends State<KumustahanPage> {
             child: Container(
               padding: EdgeInsets.all(24),
               child: Column(children: [
+                SizedBox(height: 100,),
                 Text(
                   'Quote of the Day',
                   style: TextStyle(
@@ -83,12 +84,11 @@ class _KumustahanPageState extends State<KumustahanPage> {
                     ),
                   ),
                 ]),
-                SizedBox(height: 16),
-                Divider(),
+                
                 SizedBox(height: 16),
                 SizedBox(
                     height:
-                        600), //TODO: change height once content is figured out
+                        200), 
               ]),
             ),
           ),

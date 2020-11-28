@@ -16,9 +16,6 @@ class _LandingPage extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: Drawer(
-          child: DrawerWidget(),
-        ),
         body: Container(
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(

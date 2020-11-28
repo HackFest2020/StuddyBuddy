@@ -13,11 +13,6 @@ class BuddyCarouselModel extends ChangeNotifier {
   }
 
   Widget navigateToPage() {
-    if (page == 0) {
-      _widget = BuddyPage(); //TODO: not final
-    } else if (page == 1) {
-      _widget = BuddyPage(); //TODO: not final
-    } 
-    return _widget;
+    BuddyPage();
   }
 }
