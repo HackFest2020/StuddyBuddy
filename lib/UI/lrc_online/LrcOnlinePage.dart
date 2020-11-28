@@ -132,9 +132,11 @@ class _LrcOnlinePageState extends State<LrcOnlinePage> {
                     ),
                   ),
                 ),
-                SizedBox(
-                    height:
-                        300), //TODO: fix sizedbox height once content is figured out
+                SizedBox(height: 16),
+                Divider(),
+                SizedBox(height: 16),
+                SizedBox(height: 300), //TODO: fix sizedbox height once content is figured out
+
               ]),
             ),
           ),
