@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:study_buddy/firestore/message_form.dart';
+import 'package:study_buddy/firestore/message_wall.dart';
 
 class ChatMainScreen extends StatefulWidget {
   ChatMainScreen({Key key, this.title}) : super(key: key);
@@ -35,22 +37,29 @@ class _ChatMainScreenState extends State<ChatMainScreen> {
     });
   }
 
+  void _addMessage(String value) async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      await widget.store.add({
+        'author': user.displayName ?? user.email,
+        'author_id': user.uid,
+        'photo_url': user.photoURL ?? 'https://placehold.it/100x100',
+        'timestamp': Timestamp.now().millisecondsSinceEpoch,
+        'value': value,
+      });
+    }
+  }
+
+  void _deleteMessage(String docId) async {
+    await widget.store.doc(docId).delete();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
-        actions: [
-          if (_signedIn)
-            InkWell(
-              onTap: _signOut,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Icon(Icons.logout),
-              ),
-            ),
-        ],
       ),
       backgroundColor: Color(0xffdee2d6),
       body: Column(
@@ -64,36 +73,23 @@ class _ChatMainScreenState extends State<ChatMainScreen> {
                   if (snapshot.data.docs.isEmpty) {
                     return Center(child: Text('No messages to display'));
                   }
-
-                  // return MessageWall(
-                  //   messages: snapshot.data.docs,
-                  //   onDelete: _deleteMessage,
-                  // );
+                  return MessageWall(
+                    messages: snapshot.data.docs,
+                    onDelete: _deleteMessage,
+                  );
                 }
 
                 if (snapshot.hasError) {
                   return Text(snapshot.error.toString());
                 }
-
                 return Center(
                   child: CircularProgressIndicator(),
                 );
               },
             ),
           ),
-          // if (_signedIn)
-          //   MessageForm(
-          //     onSubmit: _addMessage,
-          //   )
-          // else
-          //   Container(
-          //     padding: const EdgeInsets.all(5),
-          //     child: SignInButton(
-          //       Buttons.Google,
-          //       padding: const EdgeInsets.all(5),
-          //       onPressed: _signIn,
-          //     ),
-          //   ),
+          if (_signedIn)
+              MessageForm(onSubmit: _addMessage,)
         ],
       ),
     );
