@@ -57,7 +57,6 @@ class _KumustahanPageState extends State<KumustahanPage> {
                 color: Colors.white),
             child: Container(
               padding: EdgeInsets.all(24),
-              //alignment: Alignment.centerLeft,
               child: Column(children: [
                 Text(
                   'Quote of the Day',

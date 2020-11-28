@@ -30,16 +30,10 @@ class AccountPage extends StatelessWidget {
               SizedBox(
                 height: 24,
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AccountPage()));
-                },
-                child: CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage('./assets/img/woman.png'),
-                  backgroundColor: Colors.yellow,
-                ),
+              CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage('./assets/img/woman.png'),
+                backgroundColor: Colors.yellow,
               ),
               SizedBox(
                 height: 16,

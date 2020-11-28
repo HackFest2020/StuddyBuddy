@@ -100,7 +100,7 @@ class _StudyBuddyPageState extends State<StudyBuddyPage> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    StudyBuddyProgramsPage('COE')));
+                                    StudyBuddyProgramsPage('CCS')));
                       },
                       child: ProgramCard('ccs.png', Colors.orange, 125, 'CCS')),
                   SizedBox(height: 8),

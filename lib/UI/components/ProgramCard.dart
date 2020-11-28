@@ -5,16 +5,22 @@ class ProgramCard extends StatelessWidget {
   Color _color;
   double _height;
   String _title;
+  String _program;
 
-  ProgramCard(String imgName, Color color, double height, String title) {
+  ProgramCard(String imgName, Color color, double height, String title, [String program]) {
     _imgName = imgName;
     _color = color;
     _height = height;
     _title = title;
+    _program = program;
   }
 
   @override
   Widget build(BuildContext context) {
+    if (_program == null)
+      _program = " ";
+
+
     return Container(
       height: _height,
       width: MediaQuery.of(context).size.width,
@@ -35,13 +41,24 @@ class ProgramCard extends StatelessWidget {
           Container(
             alignment: Alignment.centerLeft,
             margin: EdgeInsets.only(left: 24),
-            child: Text(
-              _title,
-              style: TextStyle(
-                fontWeight: FontWeight.w900,
-                fontSize: 24,
-                color: Colors.white
-              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  _title,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 24,
+                      color: Colors.white),
+                ),
+                Text(
+                  _program,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w200,
+                      fontSize: 16,
+                      color: Colors.white),
+                ),
+              ],
             ),
           ),
         ]),
