@@ -35,21 +35,21 @@ class _LandingPage extends State<LandingPage> {
                 children: [
                   SizedBox(height: 56),
                   Container(
-                      alignment: Alignment.centerRight,
-                      margin: EdgeInsets.fromLTRB(0, 0, 24, 16),
-                      child: GestureDetector(
-                        onTap: () async {
-                           await FirebaseAuth.instance.signOut();
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => AccountPage()));
-                        },
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage('./assets/img/woman.png'),
-                          backgroundColor: Colors.white,
-                        ),
-                      ),),
+                    alignment: Alignment.centerRight,
+                    margin: EdgeInsets.fromLTRB(0, 0, 24, 16),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AccountPage()));
+                      },
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage('./assets/img/woman.png'),
+                        backgroundColor: Colors.white,
+                      ),
+                    ),
+                  ),
                   SizedBox(height: 36),
                   Container(
                     alignment: Alignment.centerLeft,
@@ -86,8 +86,6 @@ class _LandingPage extends State<LandingPage> {
         ));
   }
 }
-
-/////UNUSED CODE BELOW
 
 class DescriptionText extends StatefulWidget {
   @override
