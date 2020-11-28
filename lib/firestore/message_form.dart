@@ -52,10 +52,6 @@ class _MessageFormState extends State<MessageForm> {
           ),
           SizedBox(width: 5),
           RawMaterialButton(
-            onPressed: _message == null || _message.isEmpty ? null : _onPressed,
-            fillColor: _message == null || _message.isEmpty
-                ? Colors.blueGrey
-                : Theme.of(context).primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
             ),
@@ -70,6 +66,10 @@ class _MessageFormState extends State<MessageForm> {
                 ),
               ),
             ),
+            onPressed: _message == null || _message.isEmpty ? null : _onPressed,
+            fillColor: _message == null || _message.isEmpty
+                ? Colors.blueGrey
+                : Theme.of(context).primaryColor //WORKING HERE!
           ),
         ],
       ),
