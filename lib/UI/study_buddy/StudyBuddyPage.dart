@@ -19,7 +19,6 @@ class StudyBuddyPage extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<BuddyCarouselModel>(
             create: (context) => BuddyCarouselModel()),
-        //ChangeNotifierProvider<TutorModel>(create: (context) => TutorModel())
       ],
       child: Scaffold(
         backgroundColor: Colors.yellow,
@@ -97,22 +96,12 @@ class StudyBuddyPage extends StatelessWidget {
                                 program: change.doc.data()['program'],
                                 sectionYr: change.doc.data()['sectionYr'],
                                 userName: change.doc.data()['userName'],
-                                userType: change.doc.data()['userType']
-                                //value: change.document.data['value'],
-                                ),
+                                userType: change.doc.data()['userType']),
                           );
-                        });
-
-                        _blueScholarList.forEach((element) {
-                          if (element.gender == 'F') {
-                            _studyBuddyList.add('woman.png');
-                          } else if (element.gender == 'M') {
-                            _studyBuddyList.add('man.png');
-                          }
                         });
                         return Container(
                             height: 200,
-                            child: BuddyCarousel(200, _studyBuddyList));
+                            child: BuddyCarousel(200, _blueScholarList));
                       } else if (asyncSnapshot.hasError) {
                         return Text('There was an error...');
                       } else {

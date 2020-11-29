@@ -9,12 +9,11 @@ import 'package:study_buddy/UI/study_buddy/BuddyPage.dart';
 class BuddyCarousel extends StatelessWidget {
   double _height;
   List _items;
-  List _tutorDetails;
+  String _img;
 
-  BuddyCarousel(double height, List items, [List tutorDetails]) {
+  BuddyCarousel(double height, List items) {
     _height = height;
     _items = items;
-    _tutorDetails = tutorDetails;
   }
 
   @override
@@ -31,10 +30,14 @@ class BuddyCarousel extends StatelessWidget {
               carouselModel.changeDescription(index);
             }),
         items: _items.map((i) {
+          if (i.gender == 'F')
+            _img = 'woman.png';
+          else if (i.gender == 'M') _img = 'man.png';
+
           return GestureDetector(
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => BuddyPage()));
+                  MaterialPageRoute(builder: (context) => BuddyPage(_items[carouselModel.page])));
             },
             child: Builder(
               builder: (BuildContext context) {
@@ -53,7 +56,7 @@ class BuddyCarousel extends StatelessWidget {
                       child: Container(
                           alignment: Alignment.center,
                           margin: EdgeInsets.fromLTRB(0, 24, 0, 0),
-                          child: Image.asset('./assets/img/' + i,
+                          child: Image.asset('./assets/img/' + _img,
                               fit: BoxFit.contain)),
                     ));
               },

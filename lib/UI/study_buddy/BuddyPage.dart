@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:study_buddy/Models/TutorsModel.dart';
 import 'package:study_buddy/UI/components/ProgramCard.dart';
 import 'package:study_buddy/firestore/KumustahanChatScreen.dart';
 import 'package:study_buddy/firestore/StudyBuddyChatScreen.dart';
@@ -16,17 +17,30 @@ class BuddyPage extends StatelessWidget {
 
   Color _color;
 
+  Tutor _tutorDetails;
+
+  BuddyPage(Tutor details) {
+    _tutorDetails = details;
+  }
+
   @override
   Widget build(BuildContext context) {
-    _userName = 'Maureen';
-    _name = 'Maureen Kate R. Dadap';
-    _userType = 'Student';
-    _email = 'maureendadap@gmail.com';
-    _bio =
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua';
-    _department = 'CCS';
-    _program = 'Computer Science';
-    _sectionYr = 'BSCS191A';
+    _userName = _tutorDetails.userName;
+
+    
+    // _tutorDetails.map((e) {
+    //   _userName = e.userName;
+    //   _name = e.name;
+    //   _userType = e.userType;
+    //   _email = e.email;
+    //   _bio = e.bio;
+    //     //  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua';
+    //   _department = e.department;
+    //   _program = e.program;
+    //   _sectionYr = e.sectionYr;
+    // }
+    // return;
+    // );
 
     if (_department == 'CCS') {
       _imgName = 'ccs.png';
@@ -152,9 +166,12 @@ class BuddyPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context,
+          Navigator.push(
+              context,
               MaterialPageRoute(
-               builder: (context) => StudyBuddyChatScreen(title: 'Study Buddy',)));
+                  builder: (context) => StudyBuddyChatScreen(
+                        title: 'Study Buddy',
+                      )));
         },
         child: Icon(Icons.message),
       ),
