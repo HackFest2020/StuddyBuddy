@@ -9,10 +9,12 @@ import 'package:study_buddy/UI/study_buddy/BuddyPage.dart';
 class BuddyCarousel extends StatelessWidget {
   double _height;
   List _items;
+  List _tutorDetails;
 
-  BuddyCarousel(double height, List items) {
+  BuddyCarousel(double height, List items, [List tutorDetails]) {
     _height = height;
     _items = items;
+    _tutorDetails = tutorDetails;
   }
 
   @override
@@ -31,12 +33,8 @@ class BuddyCarousel extends StatelessWidget {
         items: _items.map((i) {
           return GestureDetector(
             onTap: () {
-              Navigator.push(
-                  context,
-                  // MaterialPageRoute(
-                  //     builder: (context) => carouselModel.navigateToPage()));
-                   MaterialPageRoute(
-                      builder: (context) => BuddyPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => BuddyPage()));
             },
             child: Builder(
               builder: (BuildContext context) {
