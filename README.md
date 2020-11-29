@@ -15,5 +15,5 @@ not yet tailored for iOS.
 
 # NOTE
 Make sure before typing 'flutter run' you have a Emulator running on the background.
-Or if you have a physical device make sure that USB Debugging is turned ON.
+Or if you have a physical device make sure that USB Debugging and WiFi is turned ON.
 Must also have the latest flutter and android sdk versions.
