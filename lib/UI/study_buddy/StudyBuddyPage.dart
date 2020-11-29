@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:study_buddy/Models/BuddyCarouselModel.dart';
@@ -10,12 +9,12 @@ import 'package:study_buddy/UI/study_buddy/StudyBuddyProgramsPage.dart';
 
 class StudyBuddyPage extends StatelessWidget {
   List _blueScholarIdList = [];
+  List _studyBuddyList = ["man.png", 'woman.png'];
 
   final firestoreInstance = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
-
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<BuddyCarouselModel>(
@@ -77,6 +76,7 @@ class StudyBuddyPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16),
+                  BuddyCarousel(200, _studyBuddyList),
                   //TODO: carousel here
                   SizedBox(height: 16),
                   Divider(),
