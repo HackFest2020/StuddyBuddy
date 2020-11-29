@@ -10,6 +10,7 @@ import 'package:study_buddy/UI/study_buddy/StudyBuddyProgramsPage.dart';
 
 class StudyBuddyPage extends StatelessWidget {
   List _blueScholarIdList = [];
+  List _studyBuddyList = ["man.png", "woman.png"];
 
   final firestoreInstance = FirebaseFirestore.instance;
 
@@ -20,7 +21,7 @@ class StudyBuddyPage extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<BuddyCarouselModel>(
             create: (context) => BuddyCarouselModel()),
-        ChangeNotifierProvider<TutorModel>(create: (context) => TutorModel())
+        //ChangeNotifierProvider<TutorModel>(create: (context) => TutorModel())
       ],
       child: Scaffold(
         backgroundColor: Colors.yellow,
@@ -77,7 +78,7 @@ class StudyBuddyPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16),
-                  //TODO: carousel here
+                  BuddyCarousel(200, _studyBuddyList),
                   SizedBox(height: 16),
                   Divider(),
                   SizedBox(height: 16),
