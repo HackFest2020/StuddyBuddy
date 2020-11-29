@@ -142,7 +142,7 @@ class LRCComponents {
           child: Column(children: [
             Column(children: [
               CircleAvatar(
-                backgroundImage: AssetImage('./assets/img/woman.png'),
+                backgroundImage: AssetImage('./assets/img/annabeth.png'),
                 backgroundColor: Colors.yellow,
                 radius: 40,
               ),
@@ -173,7 +173,7 @@ class LRCComponents {
             ]),
             SizedBox(height: 10),
             CircleAvatar(
-              backgroundImage: AssetImage('./assets/img/woman.png'),
+              backgroundImage: AssetImage('./assets/img/trixie.png'),
               backgroundColor: Colors.yellow,
               radius: 40,
             ),
